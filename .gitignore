@@ -1,0 +1,59 @@
+# Node.js
+node_modules/
+.pnpm-store/ # For PNPM users
+.yarn/cache/ # For Yarn users
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# TypeScript build artifacts
+dist/
+build/
+coverage/
+*.tsbuildinfo
+.tsbuildinfo/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor/IDE specific files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.DS_Store # macOS
+Thumbs.db # Windows
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Frontend specific (if not covered by general build artifacts)
+# For React/Vue/Angular projects
+.next/ # Next.js
+.nuxt/ # Nuxt.js
+out/ # Static site generation output
+# Add other framework-specific build outputs here if needed
+
+# Backend specific (if not covered by general build artifacts)
+# For Node.js applications
+tmp/
+*.sqlite
+*.sqlite3
+*.db
+# Add other backend-specific outputs like generated API docs etc.
+
+# Lerna/Nx/Turborepo specific (if using a monorepo tool)
+.lerna/
+.nx/
+.turbo/
+
+# Other common ignores
+.DS_Store
+.gitkeep
+.gitattributes
