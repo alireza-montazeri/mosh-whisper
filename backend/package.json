@@ -2,7 +2,6 @@
   "name": "mosh-whisper-backend",
   "version": "1.0.0",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "dev": "NODE_OPTIONS='--loader ts-node/esm' node --no-warnings --loader ts-node/esm src/index.ts",
     "start": "tsc & node dist/index.js",
@@ -17,14 +16,10 @@
     "@google/genai": "^1.19.0",
     "cors": "^2.8.5",
     "dotenv": "^17.2.2",
-<<<<<<< Updated upstream
     "express": "^5.1.0",
     "multer": "^2.0.2",
     "ts-node": "^10.9.2",
     "zod": "^4.1.8"
-=======
-    "express": "^5.1.0"
->>>>>>> Stashed changes
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",

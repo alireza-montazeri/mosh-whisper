@@ -5,13 +5,14 @@ import {
 } from "@google/genai";
 import path from "path";
 
+import dotenv from "dotenv";
+dotenv.config();
+
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY! });
 
 export async function transcribeAudioFile(absPath: string, mimeType?: string) {
   // Try to infer basic mime
   const mt = mimeType || guessMime(absPath);
-
-  console.log({ absPath, mt });
 
   // Upload the file once, reference by URI
   const file = await ai.files.upload({
@@ -27,11 +28,11 @@ export async function transcribeAudioFile(absPath: string, mimeType?: string) {
     model: "gemini-2.5-flash",
     contents: createUserContent([
       createPartFromUri(file.uri, file.mimeType),
-      "Describe this audio clip",
+      "Transcribe this audio verbatim in English. Output only the transcript text.",
     ]),
   });
 
-  // Optional: clean up temp file
+  // Clean up temp file
   try {
     await ai.files.delete({ name: file.name });
   } catch {}

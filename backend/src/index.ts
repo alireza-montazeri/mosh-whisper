@@ -32,7 +32,7 @@ app.post("/api/intake/recording", upload.single("audio"), async (req, res) => {
 
   try {
     // 1) transcribe
-    const transcript = await transcribeAudioFile(file.path, file.mimetype);
+    const transcript = await transcribeAudioFile(file.path);
 
     // 2) extract
     const parsed = await extractFromTranscript(transcript, quizSpec);
