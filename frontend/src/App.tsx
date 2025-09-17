@@ -110,55 +110,63 @@ export default function App() {
   };
 
   return (
-    <div
-      style={{
-        fontFamily: "system-ui, -apple-system, Segoe UI, Roboto, sans-serif",
-        padding: 24,
-      }}
-    >
-      <h2>Mosh Whisper</h2>
-      <p>
-        Try: "Hair thinning at temples for a year; dad bald; used minoxidil; no
-        allergies."
-      </p>
-
-      {!showLiveSession ? (
-        <VoiceIntake onExtractionComplete={handleExtractionComplete} />
-      ) : (
-        <div>
-          <div className="mb-4">
-            <h3 className="text-lg font-semibold mb-2">
-              Initial Extraction Complete
-            </h3>
-            <div className="text-sm text-gray-600 mb-4">
-              Found {extractionResult?.answers.length || 0} answers,{" "}
-              {extractionResult?.unanswered.length || 0} questions remaining
-            </div>
-            <button
-              onClick={resetSession}
-              className="px-4 py-2 text-sm border rounded hover:bg-gray-50"
-            >
-              Start New Recording
-            </button>
-          </div>
-
-          {extractionResult && (
-            <FollowUpLiveSession
-              sessionId={sessionId}
-              extraction={convertToBackendFormat(extractionResult)}
-              onUpdateExtraction={handleExtractionUpdate}
-              apiKey={import.meta.env.VITE_GEMINI_API_KEY || ""}
-            />
-          )}
-
-          <div className="mt-6">
-            <h4 className="font-medium mb-2">Current Extraction Status</h4>
-            <pre className="text-xs bg-gray-50 p-3 rounded overflow-auto max-h-80">
-              {JSON.stringify(extractionResult, null, 2)}
-            </pre>
-          </div>
+    <>
+      <div className="p-8 flex justify-center">
+        <div className="w-80">
+          <img src={moshLogo} />
         </div>
-      )}
-    </div>
+      </div>
+      <div
+        style={{
+          fontFamily: "system-ui, -apple-system, Segoe UI, Roboto, sans-serif",
+          padding: 24,
+        }}
+        className="text-white flex flex-col justify-center"
+      >
+        <h2>Mosh Whisper</h2>
+        <p className="mb-8">
+          Try: "Hair thinning at temples for a year; dad bald; used minoxidil; no
+          allergies."
+        </p>
+
+        {!showLiveSession ? (
+          <VoiceIntake onExtractionComplete={handleExtractionComplete} />
+        ) : (
+          <div>
+            <div className="mb-4">
+              <h3 className="text-lg font-semibold mb-2">
+                Initial Extraction Complete
+              </h3>
+              <div className="text-sm text-gray-600 mb-4">
+                Found {extractionResult?.answers.length || 0} answers,{" "}
+                {extractionResult?.unanswered.length || 0} questions remaining
+              </div>
+              <button
+                onClick={resetSession}
+                className="px-4 py-2 text-sm border rounded hover:bg-gray-50"
+              >
+                Start New Recording
+              </button>
+            </div>
+
+            {extractionResult && (
+              <FollowUpLiveSession
+                sessionId={sessionId}
+                extraction={convertToBackendFormat(extractionResult)}
+                onUpdateExtraction={handleExtractionUpdate}
+                apiKey={import.meta.env.VITE_GEMINI_API_KEY || ""}
+              />
+            )}
+
+            <div className="mt-6">
+              <h4 className="font-medium mb-2">Current Extraction Status</h4>
+              <pre className="text-xs bg-gray-50 p-3 rounded overflow-auto max-h-80">
+                {JSON.stringify(extractionResult, null, 2)}
+              </pre>
+            </div>
+          </div>
+        )}
+      </div>
+    </>
   );
 }
