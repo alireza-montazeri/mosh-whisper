@@ -197,12 +197,12 @@ export default function VoiceIntake() {
   }
 
   return (
-    <div>
-      <div style={{ display: "flex", gap: 8 }}>
+    <div className="p-4 text-black">
+      <div style={{ display: "flex", gap: 8 }} className="text-white">
         {!running ? (
-          <button onClick={start}>🎤 Start</button>
+          <button onClick={start} className="p-4 px-8 pr-12 rounded-lg bg-amber-700">🎤 Start</button>
         ) : (
-          <button onClick={stop}>■ Stop</button>
+          <button onClick={stop} className="p-4 px-8 pr-12 rounded-lg bg-amber-700">■ Stop</button>
         )}
       </div>
 
