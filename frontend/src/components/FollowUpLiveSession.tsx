@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { connectToGeminiLive } from "../lib/geminiLive";
 import {
   pickTop5Unanswered,
@@ -49,6 +49,17 @@ export default function FollowUpLiveSession({
   const recRef = useRef<MediaRecorder | null>(null);
   const streamRef = useRef<MediaStream | null>(null);
   const stopperRef = useRef<number | null>(null);
+  const currentAnswersRef = useRef<Answer[]>([]); // Track current answers
+
+  // Update the ref whenever extraction changes
+  useEffect(() => {
+    currentAnswersRef.current = extraction.answers;
+    console.log(
+      "📊 Updated currentAnswersRef with",
+      extraction.answers.length,
+      "answers"
+    );
+  }, [extraction.answers]);
 
   const [phase, setPhase] = useState<"idle" | "live" | "done" | "error">(
     "idle"
@@ -62,13 +73,13 @@ export default function FollowUpLiveSession({
   const [debugLogs, setDebugLogs] = useState<string[]>([]);
 
   // Add debug logging
-  const addDebugLog = (message: string) => {
+  const addDebugLog = useCallback((message: string) => {
     console.log(`[DEBUG] ${message}`);
     setDebugLogs((logs) => [
       ...logs.slice(-9),
       `${new Date().toLocaleTimeString()}: ${message}`,
     ]);
-  };
+  }, []);
 
   // Text-to-speech for agent responses
   useEffect(() => {
@@ -125,36 +136,71 @@ export default function FollowUpLiveSession({
     speakingRef.current = false;
   }
 
-  function mergeAnswer(answer: Partial<Answer> & { question_id: number }) {
-    console.log("📊 mergeAnswer called with:", answer);
-    console.log("📊 Current extraction before merge:", extraction);
+  const mergeAnswer = useCallback(
+    (answer: Partial<Answer> & { question_id: number }) => {
+      console.log("📊 mergeAnswer called with:", answer);
+      console.log("📊 Current extraction prop before merge:", extraction);
+      console.log(
+        "📊 Current extraction prop answers count:",
+        extraction.answers.length
+      );
+      console.log(
+        "📊 Current ref answers count:",
+        currentAnswersRef.current.length
+      );
+      console.log(
+        "📊 Existing answers from ref:",
+        currentAnswersRef.current.map(
+          (a) => `Q${a.question_id}: ${a.answer_text}`
+        )
+      );
 
-    const next: Extraction = {
-      ...extraction,
-      answers: (() => {
-        const i = extraction.answers.findIndex(
-          (a) => a.question_id === answer.question_id
-        );
-        if (i >= 0) {
-          const copy = extraction.answers.slice();
-          copy[i] = { ...copy[i], ...answer } as Answer;
-          console.log("📊 Updated existing answer at index", i, copy[i]);
-          return copy;
-        }
-        console.log("📊 Adding new answer:", answer);
-        return [...extraction.answers, answer as Answer];
-      })(),
-      unanswered: extraction.unanswered.filter(
-        (u) => u.question_id !== answer.question_id
-      ),
-    };
+      // Use the current answers from ref instead of prop
+      const currentAnswers = currentAnswersRef.current;
 
-    console.log("📊 New extraction after merge:", next);
-    onUpdateExtraction(next);
-    addDebugLog(
-      `Answer merged for question ${answer.question_id}: ${answer.answer_text}`
-    );
-  }
+      const next: Extraction = {
+        ...extraction,
+        answers: (() => {
+          const i = currentAnswers.findIndex(
+            (a) => a.question_id === answer.question_id
+          );
+          if (i >= 0) {
+            const copy = currentAnswers.slice();
+            copy[i] = { ...copy[i], ...answer } as Answer;
+            console.log("📊 Updated existing answer at index", i, copy[i]);
+            return copy;
+          }
+          console.log("📊 Adding new answer:", answer);
+          const newAnswers = [...currentAnswers, answer as Answer];
+          console.log(
+            "📊 New answers array:",
+            newAnswers.map((a) => `Q${a.question_id}: ${a.answer_text}`)
+          );
+          return newAnswers;
+        })(),
+        unanswered: extraction.unanswered.filter(
+          (u) => u.question_id !== answer.question_id
+        ),
+      };
+
+      console.log("📊 New extraction after merge:", next);
+      console.log("📊 New extraction answers count:", next.answers.length);
+      console.log(
+        "📊 Calling onUpdateExtraction with:",
+        next.answers.length,
+        "answers"
+      );
+
+      // Update the ref immediately to track the latest state
+      currentAnswersRef.current = next.answers;
+
+      onUpdateExtraction(next);
+      addDebugLog(
+        `Answer merged for question ${answer.question_id}: ${answer.answer_text}`
+      );
+    },
+    [extraction, onUpdateExtraction, addDebugLog]
+  );
 
   async function start() {
     try {
@@ -381,10 +427,12 @@ export default function FollowUpLiveSession({
                 style={{
                   marginBottom: 8,
                   padding: 4,
-                  backgroundColor: "#e3f2fd",
+                  backgroundColor: "#222e36",
+                  color: "#e3f2fd",
+                  borderRadius: 4,
                 }}
               >
-                <strong>Agent:</strong> {msg}
+                <strong style={{ color: "#90caf9" }}>Agent:</strong> {msg}
               </div>
             ))}
           </div>
@@ -411,10 +459,12 @@ export default function FollowUpLiveSession({
             style={{
               maxHeight: 150,
               overflowY: "auto",
-              border: "1px solid #ddd",
+              border: "1px solid #333",
               padding: 8,
               fontSize: "12px",
-              backgroundColor: "#f8f9fa",
+              backgroundColor: "#222",
+              color: "#eee",
+              borderRadius: 4,
             }}
           >
             {debugLogs.map((log, i) => (

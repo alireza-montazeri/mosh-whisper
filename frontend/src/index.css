@@ -3,3 +3,47 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Custom loading animations */
+@keyframes dot-pulse {
+  0%, 20% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+  80%, 100% {
+    opacity: 0.2;
+  }
+}
+
+@keyframes progress-bar {
+  0% {
+    width: 0%;
+  }
+  50% {
+    width: 70%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.dot-1 {
+  animation: dot-pulse 1.5s infinite;
+  animation-delay: 0s;
+}
+
+.dot-2 {
+  animation: dot-pulse 1.5s infinite;
+  animation-delay: 0.3s;
+}
+
+.dot-3 {
+  animation: dot-pulse 1.5s infinite;
+  animation-delay: 0.6s;
+}
+
+.progress-bar-animated {
+  animation: progress-bar 2s ease-in-out infinite;
+}

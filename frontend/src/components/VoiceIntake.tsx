@@ -338,7 +338,15 @@ export default function VoiceIntake({ onExtractionComplete }: Props) {
       )}
 
       {uploading && (
-        <div className="text-sm text-gray-600">Uploading & processing…</div>
+        <div className="flex items-center space-x-3 text-sm text-gray-600 py-4">
+          {/* Spinning circle loader */}
+          <div className="animate-spin rounded-full h-5 w-5 border-2 border-gray-300 border-t-blue-600"></div>
+
+          {/* Animated text with dots */}
+          <div className="flex items-center text-white space-x-1">
+            <span>Uploading & processing...</span>
+          </div>
+        </div>
       )}
 
       {result && (

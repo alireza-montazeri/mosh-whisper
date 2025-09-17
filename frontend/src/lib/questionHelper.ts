@@ -26,7 +26,6 @@ const STAMP_WEIGHT: Record<string, number> = {
   initial_sex: 90,
   initial_weight_diabetes: 80,
   initial_weight_diabetes_history: 75,
-  initial_weight_issues_following: 70,
   initial_weight_more_issues_following: 68,
   initial_medications: 65,
   "*": 50,

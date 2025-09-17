@@ -40,7 +40,16 @@ type Question = {
 
 function buildInstructions(_confidenceThreshold: number) {
   return `
-You are a helpful assistant. When you receive questions, say "Hello! I received your questions and I'm ready to help." Then start asking the questions one by one.
+You are a helpful medical interview assistant. When you receive questions, greet the user warmly and explain that you'll be asking questions one at a time. 
+
+CRITICAL WAITING RULES:
+- After asking a question, STOP and wait patiently 
+- Do NOT continue talking or ask follow-up questions immediately
+- Allow natural pauses - users need time to think
+- Wait for the user to fully complete their answer
+- Only proceed after you've recorded their answer with the updateAnswer tool
+
+Remember: Patience is key. Better to wait too long than to interrupt the user.
 `;
 }
 
@@ -63,7 +72,7 @@ Instructions:
 3. After recording the answer, continue to the next question
 4. Be empathetic and natural in your conversation
 
-Please start the interview now by greeting me and asking the first question.`,
+Please start the interview now by greeting me and asking the first question. Remember: ask the question, then wait patiently for my full response.`,
       },
     ],
   };
@@ -125,12 +134,16 @@ export async function connectToGeminiLive(opts: {
     model: "gemini-2.0-flash-exp",
     config: {
       systemInstruction:
-        "You are a helpful medical interview assistant. Ask questions one by one and listen carefully to answers. When you receive a clear answer to a question, use the updateAnswer tool to record it with the question details and the user's response. Always wait for the user to respond before continuing. Be conversational and empathetic.",
+        "You are a helpful medical interview assistant. Ask questions one by one and ALWAYS wait for the user to respond completely before continuing. Be patient - users need time to think and speak. Only ask the next question AFTER you have received and recorded a clear answer using the updateAnswer tool. If there's silence, wait patiently. Never rush the conversation or assume the user is done speaking. Be conversational, empathetic, and give users adequate time to provide thoughtful responses.",
       generationConfig: {
         responseModalities: [Modality.TEXT],
         speechConfig: {
           voiceConfig: { prebuiltVoiceConfig: { voiceName: "Aoede" } },
         },
+        // Add additional configuration for better turn-taking
+        temperature: 0.7,
+        topP: 0.8,
+        maxOutputTokens: 150, // Limit response length to prevent rambling
       },
       tools: [
         {

@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import VoiceIntake from "./components/VoiceIntake";
-import moshLogo from "./assets/mosh-logo.svg"
+import moshLogo from "./assets/mosh-logo.svg";
 import FollowUpLiveSession from "./components/FollowUpLiveSession";
 
 type ExtractResponse = {
@@ -83,10 +83,67 @@ export default function App() {
   const handleExtractionUpdate = (updatedExtraction: BackendExtraction) => {
     console.log("🔄 handleExtractionUpdate called with:", updatedExtraction);
     console.log("🔄 Current extractionResult before update:", extractionResult);
+    console.log(
+      "🔄 Number of answers in update:",
+      updatedExtraction.answers.length
+    );
+    console.log(
+      "🔄 Answer details:",
+      updatedExtraction.answers.map(
+        (a) => `Q${a.question_id}: ${a.answer_text}`
+      )
+    );
 
     // Convert back to ExtractResponse format for display
+    // Merge new answers with existing ones, avoiding duplicates
+    const existingAnswers = extractionResult?.answers || [];
+    const newAnswers = updatedExtraction.answers;
+
+    console.log("🔄 Existing answers count:", existingAnswers.length);
+    console.log("🔄 New answers count:", newAnswers.length);
+    console.log(
+      "🔄 Existing answers:",
+      existingAnswers.map((a) => `Q${a.question_id}: ${a.answer_text}`)
+    );
+    console.log(
+      "🔄 New answers:",
+      newAnswers.map((a) => `Q${a.question_id}: ${a.answer_text}`)
+    );
+
+    // Create a map of existing answers by question_id for easy lookup
+    const existingAnswersMap = new Map();
+    existingAnswers.forEach((answer) => {
+      existingAnswersMap.set(answer.question_id, answer);
+    });
+
+    // Merge answers - update existing or add new ones
+    const mergedAnswers = [...existingAnswers];
+    newAnswers.forEach((newAnswer) => {
+      const existingIndex = mergedAnswers.findIndex(
+        (a) => a.question_id === newAnswer.question_id
+      );
+      if (existingIndex >= 0) {
+        // Update existing answer
+        console.log(
+          "🔄 Updating existing answer for question",
+          newAnswer.question_id
+        );
+        mergedAnswers[existingIndex] = newAnswer;
+      } else {
+        // Add new answer
+        console.log("🔄 Adding new answer for question", newAnswer.question_id);
+        mergedAnswers.push(newAnswer);
+      }
+    });
+
+    console.log("🔄 Merged answers count:", mergedAnswers.length);
+    console.log(
+      "🔄 Merged answers:",
+      mergedAnswers.map((a) => `Q${a.question_id}: ${a.answer_text}`)
+    );
+
     const convertedResult: ExtractResponse = {
-      answers: updatedExtraction.answers,
+      answers: mergedAnswers,
       unanswered: updatedExtraction.unanswered.map((u) => ({
         question_id: u.question_id,
         question_text: u.question_text || null,
@@ -101,6 +158,10 @@ export default function App() {
     };
 
     console.log("🔄 Converted result:", convertedResult);
+    console.log(
+      "🔄 Setting extractionResult with answers:",
+      convertedResult.answers.length
+    );
     setExtractionResult(convertedResult);
   };
 
@@ -108,6 +169,12 @@ export default function App() {
     setExtractionResult(null);
     setShowLiveSession(false);
   };
+
+  // Memoize the extraction prop to prevent unnecessary re-renders
+  const memoizedExtraction = useMemo(
+    () => (extractionResult ? convertToBackendFormat(extractionResult) : null),
+    [extractionResult]
+  );
 
   return (
     <>
@@ -123,11 +190,9 @@ export default function App() {
         }}
         className="text-white flex flex-col justify-center"
       >
-        <h2>Mosh Whisper</h2>
-        <p className="mb-8">
-          Try: "Hair thinning at temples for a year; dad bald; used minoxidil; no
-          allergies."
-        </p>
+        <h2 className="flex justify-center text-2xl font-bold mb-5">
+          Mosh Whisper
+        </h2>
 
         {!showLiveSession ? (
           <VoiceIntake onExtractionComplete={handleExtractionComplete} />
@@ -137,7 +202,7 @@ export default function App() {
               <h3 className="text-lg font-semibold mb-2">
                 Initial Extraction Complete
               </h3>
-              <div className="text-sm text-gray-600 mb-4">
+              <div className="text-2xl  mb-4 text-white">
                 Found {extractionResult?.answers.length || 0} answers,{" "}
                 {extractionResult?.unanswered.length || 0} questions remaining
               </div>
@@ -149,10 +214,10 @@ export default function App() {
               </button>
             </div>
 
-            {extractionResult && (
+            {extractionResult && memoizedExtraction && (
               <FollowUpLiveSession
                 sessionId={sessionId}
-                extraction={convertToBackendFormat(extractionResult)}
+                extraction={memoizedExtraction}
                 onUpdateExtraction={handleExtractionUpdate}
                 apiKey={import.meta.env.VITE_GEMINI_API_KEY || ""}
               />
@@ -160,7 +225,7 @@ export default function App() {
 
             <div className="mt-6">
               <h4 className="font-medium mb-2">Current Extraction Status</h4>
-              <pre className="text-xs bg-gray-50 p-3 rounded overflow-auto max-h-80">
+              <pre className="text-xs bg-neutral-700 p-3 rounded overflow-auto max-h-[500px]">
                 {JSON.stringify(extractionResult, null, 2)}
               </pre>
             </div>
