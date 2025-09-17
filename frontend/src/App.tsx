@@ -64,7 +64,8 @@ export default function App() {
   const convertToBackendFormat = (
     result: ExtractResponse
   ): BackendExtraction => {
-    return {
+    console.log("🔄 convertToBackendFormat called with:", result);
+    const converted = {
       answers: result.answers,
       unanswered: result.unanswered.map((u) => ({
         question_id: u.question_id,
@@ -74,9 +75,14 @@ export default function App() {
       derived: result.derived as Record<string, unknown>,
       warnings: result.warnings,
     };
+    console.log("🔄 convertToBackendFormat result:", converted);
+    return converted;
   };
 
   const handleExtractionUpdate = (updatedExtraction: BackendExtraction) => {
+    console.log("🔄 handleExtractionUpdate called with:", updatedExtraction);
+    console.log("🔄 Current extractionResult before update:", extractionResult);
+
     // Convert back to ExtractResponse format for display
     const convertedResult: ExtractResponse = {
       answers: updatedExtraction.answers,
@@ -92,6 +98,8 @@ export default function App() {
       },
       warnings: updatedExtraction.warnings,
     };
+
+    console.log("🔄 Converted result:", convertedResult);
     setExtractionResult(convertedResult);
   };
 
