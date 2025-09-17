@@ -8,39 +8,27 @@ export const responseSchema = {
       items: {
         type: Type.OBJECT,
         properties: {
+          // Question fields
           question_id: { type: Type.INTEGER },
-          frontend_stamp: { type: Type.STRING },
-          type: { type: Type.STRING }, // matches question_type
-          // one of the following depending on type:
+          question_text: { type: Type.STRING, nullable: true },
+          question_frontend_stamp: { type: Type.STRING, nullable: true },
+
+          // Answer fields
           answer_id: { type: Type.INTEGER, nullable: true },
-          answer_ids: {
-            type: Type.ARRAY,
-            items: { type: Type.INTEGER },
-            nullable: true,
-          },
-          free_text: { type: Type.STRING, nullable: true },
-          number: { type: Type.NUMBER, nullable: true },
-          unit: { type: Type.STRING, nullable: true },
-          date: { type: Type.STRING, nullable: true },
-          phone: { type: Type.STRING, nullable: true },
-          email: { type: Type.STRING, nullable: true },
-          first_name: { type: Type.STRING, nullable: true },
-          last_name: { type: Type.STRING, nullable: true },
-          suburb: { type: Type.STRING, nullable: true },
-          state: { type: Type.STRING, nullable: true },
-          postcode: { type: Type.STRING, nullable: true },
+          answer_text: { type: Type.STRING, nullable: true },
+          answer_frontend_stamp: { type: Type.STRING, nullable: true },
+
+          // Meta
+          type: { type: Type.STRING, nullable: true }, // matches question_type
           confidence: { type: Type.NUMBER },
           evidence: { type: Type.STRING },
         },
-        required: [
-          "question_id",
-          "frontend_stamp",
-          "type",
-          "confidence",
-          "evidence",
-        ],
+        required: ["question_id", "type", "confidence", "evidence"],
+        additionalProperties: false,
       },
     },
+
+    // keep derived minimal; allow nulls
     derived: {
       type: Type.OBJECT,
       properties: {
@@ -48,8 +36,24 @@ export const responseSchema = {
         weight_kg: { type: Type.NUMBER, nullable: true },
         bmi: { type: Type.NUMBER, nullable: true },
       },
+      additionalProperties: true,
     },
-    unanswered: { type: Type.ARRAY, items: { type: Type.INTEGER } },
+
+    // unanswered entries with corrected types
+    unanswered: {
+      type: Type.ARRAY,
+      items: {
+        type: Type.OBJECT,
+        properties: {
+          question_id: { type: Type.INTEGER },
+          question_text: { type: Type.STRING, nullable: true },
+          question_frontend_stamp: { type: Type.STRING, nullable: true },
+        },
+        required: ["question_id"],
+        additionalProperties: false,
+      },
+    },
+
     warnings: { type: Type.ARRAY, items: { type: Type.STRING } },
   },
   required: ["answers", "derived", "unanswered", "warnings"],

@@ -1,0 +1,628 @@
+{
+  "answers": [
+    {
+      "question_id": 1437,
+      "type": "single_choice",
+      "confidence": 1,
+      "evidence": "Hey, I'm here for a weight loss consult.",
+      "answer_frontend_stamp": "initial_mosh_onboarding",
+      "answer_id": 2953,
+      "answer_text": "a",
+      "question_frontend_stamp": "initial_mosh_onboarding",
+      "question_text": "Welcome to your weight loss consultation!"
+    },
+    {
+      "question_id": 1275,
+      "type": "single_choice",
+      "confidence": 1,
+      "evidence": "Assigned male at birth",
+      "answer_frontend_stamp": "initial_sex_answer_male",
+      "answer_id": 2691,
+      "answer_text": "Male",
+      "question_frontend_stamp": "initial_sex",
+      "question_text": "For medical purposes, what was your assigned sex at birth?"
+    },
+    {
+      "question_id": 1276,
+      "type": "single_choice",
+      "confidence": 1,
+      "evidence": "not pregnant",
+      "answer_frontend_stamp": "initial_pregnant_answer_no",
+      "answer_id": 2693,
+      "answer_text": "No",
+      "question_frontend_stamp": "initial_pregnant",
+      "question_text": "Are you currently pregnant or breastfeeding, or is there a chance that you may be pregnant?"
+    },
+    {
+      "question_id": 1277,
+      "type": "number",
+      "confidence": 1,
+      "evidence": "I'm 175 cm tall",
+      "answer_frontend_stamp": "height",
+      "answer_text": "height",
+      "question_frontend_stamp": "initial_height",
+      "question_text": "My height is _ centimetres"
+    },
+    {
+      "question_id": 1278,
+      "type": "number",
+      "confidence": 1,
+      "evidence": "about 98 kg",
+      "answer_frontend_stamp": "weight",
+      "answer_text": "weight",
+      "question_frontend_stamp": "initial_moshy_weight",
+      "question_text": "My weight is _ kilograms"
+    },
+    {
+      "question_id": 3648,
+      "type": "single_choice",
+      "confidence": 1,
+      "evidence": "You can send results by email.",
+      "answer_frontend_stamp": "initial_lead_form_sso_email",
+      "answer_id": 5722,
+      "answer_text": "Email",
+      "question_frontend_stamp": "initial_lead_form_sso",
+      "question_text": "Where should we send your results?"
+    },
+    {
+      "question_id": 1281,
+      "type": "single_choice",
+      "confidence": 1,
+      "evidence": "I've tried diets and the gym, but nothing stuck.",
+      "answer_frontend_stamp": "initial_weight_tried_yes",
+      "answer_id": 2704,
+      "answer_text": "Yes",
+      "question_frontend_stamp": "initial_weight_tried",
+      "question_text": "Have you ever tried losing weight before?"
+    },
+    {
+      "question_id": 1282,
+      "type": "multi_choice",
+      "confidence": 1,
+      "evidence": "I've tried diets and the gym",
+      "answer_frontend_stamp": "initial_weight_methods_diets",
+      "answer_id": 2712,
+      "answer_text": "Diets",
+      "question_frontend_stamp": "initial_weight_methods",
+      "question_text": "What weight loss methods have you tried?"
+    },
+    {
+      "question_id": 1282,
+      "type": "multi_choice",
+      "confidence": 1,
+      "evidence": "I've tried diets and the gym",
+      "answer_frontend_stamp": "initial_weight_methods_gym_exercise",
+      "answer_id": 2710,
+      "answer_text": "Gym/Exercise",
+      "question_frontend_stamp": "initial_weight_methods",
+      "question_text": "What weight loss methods have you tried?"
+    },
+    {
+      "question_id": 1283,
+      "type": "single_choice",
+      "confidence": 1,
+      "evidence": "Been above my ideal weight for about 4 to 5 years.",
+      "answer_frontend_stamp": "initial_weight_time_since_4_5",
+      "answer_id": 2715,
+      "answer_text": "4-5 years",
+      "question_frontend_stamp": "initial_weight_time_since",
+      "question_text": "How long has it been since you were your ideal weight?"
+    },
+    {
+      "question_id": 1285,
+      "type": "single_choice",
+      "confidence": 1,
+      "evidence": "Diet is healthy-ish",
+      "answer_frontend_stamp": "initial_weight_rate_diet_healthy_ish",
+      "answer_id": 2724,
+      "answer_text": "Healthy-ish",
+      "question_frontend_stamp": "initial_weight_rate_diet",
+      "question_text": "How would you rate your current diet?"
+    },
+    {
+      "question_id": 1286,
+      "type": "single_choice",
+      "confidence": 1,
+      "evidence": "not following anything specific.",
+      "answer_frontend_stamp": "initial_weight_follow_diet_no",
+      "answer_id": 2726,
+      "answer_text": "No",
+      "question_frontend_stamp": "initial_weight_follow_diet",
+      "question_text": "Do you currently follow a diet?"
+    },
+    {
+      "question_id": 1288,
+      "type": "single_choice",
+      "confidence": 1,
+      "evidence": "I eat out two to three times a week",
+      "answer_frontend_stamp": "initial_weight_eat_out_2_3_week",
+      "answer_id": 2732,
+      "answer_text": "2-3 times per week",
+      "question_frontend_stamp": "initial_weight_eat_out",
+      "question_text": "How many times a week do you eat out?"
+    },
+    {
+      "question_id": 1289,
+      "type": "single_choice",
+      "confidence": 1,
+      "evidence": "takeaway once or twice.",
+      "answer_frontend_stamp": "initial_weight_takeaway_0_1_week",
+      "answer_id": 2738,
+      "answer_text": "0-1 times per week",
+      "question_frontend_stamp": "initial_weight_takeaway",
+      "question_text": "How many times a week do you get take away/home delivery?"
+    },
+    {
+      "question_id": 1290,
+      "type": "single_choice",
+      "confidence": 1,
+      "evidence": "I snack most days.",
+      "answer_frontend_stamp": "initial_weight_snack_every_day",
+      "answer_id": 2740,
+      "answer_text": "Every day",
+      "question_frontend_stamp": "initial_weight_snack",
+      "question_text": "How often do you snack?"
+    },
+    {
+      "question_id": 1291,
+      "type": "single_choice",
+      "confidence": 1,
+      "evidence": "Processed food a few times a week.",
+      "answer_frontend_stamp": "initial_weight_processed_food_2_3_week",
+      "answer_id": 2747,
+      "answer_text": "2-3 times per week",
+      "question_frontend_stamp": "initial_weight_processed_food",
+      "question_text": "How many times do you eat processed food per week?"
+    },
+    {
+      "question_id": 1292,
+      "type": "single_choice",
+      "confidence": 1,
+      "evidence": "Fruit and veg most days.",
+      "answer_frontend_stamp": "initial_weight_fruit_or_veg_every_day",
+      "answer_id": 2751,
+      "answer_text": "Every day",
+      "question_frontend_stamp": "initial_weight_fruit_or_veg",
+      "question_text": "How often do you eat fruit or vegetables?"
+    },
+    {
+      "question_id": 1293,
+      "type": "single_choice",
+      "confidence": 1,
+      "evidence": "Soft drinks two to three a week.",
+      "answer_frontend_stamp": "initial_weight_soft_drinks_2_3_week",
+      "answer_id": 2755,
+      "answer_text": "2-3 times per week",
+      "question_frontend_stamp": "initial_weight_soft_drinks",
+      "question_text": "What about soft drinks (excluding zero cal or sugar free drinks)?"
+    },
+    {
+      "question_id": 1295,
+      "type": "single_choice",
+      "confidence": 1,
+      "evidence": "I don't smoke.",
+      "answer_frontend_stamp": "initial_smoke_no",
+      "answer_id": 2764,
+      "answer_text": "No",
+      "question_frontend_stamp": "initial_smoke",
+      "question_text": "Do you smoke?"
+    },
+    {
+      "question_id": 1294,
+      "type": "multi_choice",
+      "confidence": 1,
+      "evidence": "Sleep is under 7 hours",
+      "answer_frontend_stamp": "initial_describe_you_sleep",
+      "answer_id": 2759,
+      "answer_text": "Sleep less than 7hrs per night (on average)",
+      "question_frontend_stamp": "initial_describe_you",
+      "question_text": "Do any of the following describe you?"
+    },
+    {
+      "question_id": 1294,
+      "type": "multi_choice",
+      "confidence": 1,
+      "evidence": "I'm pretty stressed with work.",
+      "answer_frontend_stamp": "initial_describe_you_stress",
+      "answer_id": 2758,
+      "answer_text": "Frequently under stress",
+      "question_frontend_stamp": "initial_describe_you",
+      "question_text": "Do any of the following describe you?"
+    },
+    {
+      "question_id": 1296,
+      "type": "single_choice",
+      "confidence": 1,
+      "evidence": "Fitness feels below average.",
+      "answer_frontend_stamp": "initial_weight_physical_fitness_below_average",
+      "answer_id": 2766,
+      "answer_text": "Below average",
+      "question_frontend_stamp": "initial_weight_physical_fitness",
+      "question_text": "In general, how would you rate your physical fitness?"
+    },
+    {
+      "question_id": 1297,
+      "type": "single_choice",
+      "confidence": 1,
+      "evidence": "I do around two hours of moderate exercise a week.",
+      "answer_frontend_stamp": "initial_weight_physical_activity_under_2",
+      "answer_id": 2773,
+      "answer_text": "Less than 2.5 hours",
+      "question_frontend_stamp": "initial_weight_physical_activity",
+      "question_text": "How much moderate physical activity do you do per week?"
+    },
+    {
+      "question_id": 1298,
+      "type": "single_choice",
+      "confidence": 1,
+      "evidence": "My weight makes running uncomfortable, a little.",
+      "answer_frontend_stamp": "initial_weight_interfere_exercise_yes",
+      "answer_id": 2775,
+      "answer_text": "Yes",
+      "question_frontend_stamp": "initial_weight_interfere_exercise",
+      "question_text": "Does your weight interfere with your ability to exercise?"
+    },
+    {
+      "question_id": 1299,
+      "type": "multi_choice",
+      "confidence": 1,
+      "evidence": "No pancreatitis, gallstones, or kidney issues.",
+      "answer_frontend_stamp": "initial_weight_issues_following_no",
+      "answer_id": 2777,
+      "answer_text": "No, I haven't been diagnosed with any of these conditions",
+      "question_frontend_stamp": "initial_weight_issues_following",
+      "question_text": "Have you ever had any issues with the following?"
+    },
+    {
+      "question_id": 1301,
+      "type": "multi_choice",
+      "confidence": 1,
+      "evidence": "I get reflux sometimes",
+      "answer_frontend_stamp": "initial_weight_more_issues_following_gastro",
+      "answer_id": 2793,
+      "answer_text": "Gastrointestinal problems (e.g. reflux, fatty liver)",
+      "question_frontend_stamp": "initial_weight_more_issues_following",
+      "question_text": "Just to be safe, have you ever had any issues with the following?"
+    },
+    {
+      "question_id": 1301,
+      "type": "multi_choice",
+      "confidence": 1,
+      "evidence": "had high cholesterol last year.",
+      "answer_frontend_stamp": "initial_weight_more_issues_following_high_cholestorol",
+      "answer_id": 2791,
+      "answer_text": "High cholesterol or high triglycerides (blood fats)",
+      "question_frontend_stamp": "initial_weight_more_issues_following",
+      "question_text": "Just to be safe, have you ever had any issues with the following?"
+    },
+    {
+      "question_id": 2493,
+      "type": "multi_choice",
+      "confidence": 1,
+      "evidence": "no thyroid tumors or men",
+      "answer_frontend_stamp": "initial_weight_family_issues_following_answer_none",
+      "answer_id": 4306,
+      "answer_text": "None of the above",
+      "question_frontend_stamp": "initial_weight_family_issues_following",
+      "question_text": "Have any of your immediate family members ever had issues with the following?"
+    },
+    {
+      "question_id": 1303,
+      "type": "single_choice",
+      "confidence": 1,
+      "evidence": "I get reflux sometimes and had high cholesterol last year.",
+      "answer_frontend_stamp": "initial_past_conditions_yes",
+      "answer_id": 2799,
+      "answer_text": "Yes",
+      "question_frontend_stamp": "initial_past_conditions",
+      "question_text": "Do you have any past medical conditions?"
+    },
+    {
+      "question_id": 1304,
+      "type": "free_text",
+      "confidence": 1,
+      "evidence": "reflux sometimes and had high cholesterol last year.",
+      "answer_frontend_stamp": "initial_past_conditions_free_text",
+      "answer_text": "reflux sometimes and had high cholesterol last year.",
+      "question_frontend_stamp": "initial_past_conditions_free_text",
+      "question_text": "Please give the doctor more information."
+    },
+    {
+      "question_id": 1305,
+      "type": "multi_choice",
+      "confidence": 1,
+      "evidence": "Medications, none.",
+      "answer_frontend_stamp": "initial_weight_medications_no",
+      "answer_id": 2801,
+      "answer_text": "No, I am not taking any of the above medication",
+      "question_frontend_stamp": "initial_weight_medications",
+      "question_text": "Are you currently taking any of the below medications?"
+    },
+    {
+      "question_id": 1307,
+      "type": "multi_choice",
+      "confidence": 1,
+      "evidence": "No weight loss surgeries.",
+      "answer_frontend_stamp": "initial_weight_surgeries_no",
+      "answer_id": 2811,
+      "answer_text": "None of the above",
+      "question_frontend_stamp": "initial_weight_surgeries",
+      "question_text": "Have you had any of the following surgeries?"
+    },
+    {
+      "question_id": 1308,
+      "type": "single_choice",
+      "confidence": 1,
+      "evidence": "I've never had diabetes.",
+      "answer_frontend_stamp": "initial_weight_diabetes_neither",
+      "answer_id": 2816,
+      "answer_text": "Neither",
+      "question_frontend_stamp": "initial_weight_diabetes",
+      "question_text": "Have you ever had diabetes?"
+    },
+    {
+      "question_id": 1309,
+      "type": "single_choice",
+      "confidence": 1,
+      "evidence": "Family has diabetes",
+      "answer_frontend_stamp": "initial_weight_diabetes_history_yes",
+      "answer_id": 2821,
+      "answer_text": "Yes",
+      "question_frontend_stamp": "initial_weight_diabetes_history",
+      "question_text": "Is there history of diabetes in your family?"
+    },
+    {
+      "question_id": 1314,
+      "type": "date_of_birth",
+      "confidence": 1,
+      "evidence": "DOB March 14th, 1990.",
+      "answer_frontend_stamp": "initial_dob",
+      "answer_text": "1990-03-14",
+      "question_frontend_stamp": "initial_dob",
+      "question_text": "What is your date of birth?"
+    },
+    {
+      "question_id": 1315,
+      "type": "single_choice",
+      "confidence": 1,
+      "evidence": "Ethnicity, Caucasian.",
+      "answer_frontend_stamp": "initial_ethnicity_caucasian",
+      "answer_id": 2835,
+      "answer_text": "Caucasian",
+      "question_frontend_stamp": "initial_ethnicity",
+      "question_text": "What is your ethnic background?"
+    },
+    {
+      "question_id": 1441,
+      "type": "number",
+      "confidence": 1,
+      "evidence": "Waist is roughly 38 in.",
+      "answer_frontend_stamp": "initial_weight_waist_size_1",
+      "answer_text": "waist",
+      "question_frontend_stamp": "initial_weight_waist_size",
+      "question_text": "My current waist size is _ inches"
+    },
+    {
+      "question_id": 1317,
+      "type": "single_choice",
+      "confidence": 1,
+      "evidence": "Medications, none.",
+      "answer_frontend_stamp": "initial_medications_no",
+      "answer_id": 2841,
+      "answer_text": "No",
+      "question_frontend_stamp": "initial_medications",
+      "question_text": "Are you currently taking medications or supplements?"
+    },
+    {
+      "question_id": 1319,
+      "type": "single_choice",
+      "confidence": 1,
+      "evidence": "Allergies, penicillin.",
+      "answer_frontend_stamp": "initial_allergies_yes",
+      "answer_id": 2845,
+      "answer_text": "Yes",
+      "question_frontend_stamp": "initial_allergies",
+      "question_text": "Do you have any allergies?"
+    },
+    {
+      "question_id": 1320,
+      "type": "free_text",
+      "confidence": 1,
+      "evidence": "penicillin.",
+      "answer_frontend_stamp": "initial_allergies_free_text",
+      "answer_text": "penicillin",
+      "question_frontend_stamp": "initial_allergies_free_text",
+      "question_text": "What allergies do you have?"
+    },
+    {
+      "question_id": 1321,
+      "type": "single_choice",
+      "confidence": 1,
+      "evidence": "Socially, it holds me back a bit",
+      "answer_frontend_stamp": "initial_weight_ability_socialise_yes",
+      "answer_id": 2848,
+      "answer_text": "Yes",
+      "question_frontend_stamp": "initial_weight_ability_socialise",
+      "question_text": "Has your weight ever affected your ability to socialise or engage with friends?"
+    },
+    {
+      "question_id": 1323,
+      "type": "single_choice",
+      "confidence": 1,
+      "evidence": "I think it's hurting my health quite a lot.",
+      "answer_frontend_stamp": "initial_weight_affecting_health_quite",
+      "answer_id": 2854,
+      "answer_text": "Quite a lot",
+      "question_frontend_stamp": "initial_weight_affecting_health",
+      "question_text": "How much do you believe your weight is negatively affecting your health?"
+    },
+    {
+      "question_id": 1324,
+      "type": "single_choice",
+      "confidence": 1,
+      "evidence": "I'm open to tablets or injections, whatever the doctor recommends.",
+      "answer_frontend_stamp": "initial_weight_preferences_either",
+      "answer_id": 2857,
+      "answer_text": "I am open to using either, whatever my doctor decides is most appropriate for me",
+      "question_frontend_stamp": "initial_weight_preferences",
+      "question_text": "To assist your practitioner in determining what the best treatment is for you personally, let your practitioner know if you are you open to using tablets or injections"
+    },
+    {
+      "question_id": 1326,
+      "type": "single_choice",
+      "confidence": 1,
+      "evidence": "This is very important to me.",
+      "answer_frontend_stamp": "intial_weight_journey_very_important",
+      "answer_id": 2861,
+      "answer_text": "Very important",
+      "question_frontend_stamp": "intial_weight_journey",
+      "question_text": "How important is this weight loss journey to you?"
+    },
+    {
+      "question_id": 2295,
+      "type": "free_text",
+      "confidence": 1,
+      "evidence": "Newtown",
+      "answer_frontend_stamp": "initial_suburb",
+      "answer_id": 4072,
+      "answer_text": "Newtown",
+      "question_frontend_stamp": "initial_suburb",
+      "question_text": "Please provide your delivery suburb and postcode"
+    },
+    {
+      "question_id": 2295,
+      "type": "free_text",
+      "confidence": 1,
+      "evidence": "2042",
+      "answer_frontend_stamp": "initial_postcode",
+      "answer_id": 4039,
+      "answer_text": "2042",
+      "question_frontend_stamp": "initial_suburb",
+      "question_text": "Please provide your delivery suburb and postcode"
+    },
+    {
+      "question_id": 2295,
+      "type": "free_text",
+      "confidence": 1,
+      "evidence": "New South Wales",
+      "answer_frontend_stamp": "initial_state",
+      "answer_id": 5161,
+      "answer_text": "New South Wales",
+      "question_frontend_stamp": "initial_suburb",
+      "question_text": "Please provide your delivery suburb and postcode"
+    }
+  ],
+  "derived": {
+    "bmi": null,
+    "height_cm": 175,
+    "weight_kg": null
+  },
+  "unanswered": [
+    {
+      "question_id": 1329,
+      "question_text": "Great news",
+      "question_frontend_stamp": "initial_loading_weight"
+    },
+    {
+      "question_id": 1279,
+      "question_text": "What is your main reason for wanting to lose weight?",
+      "question_frontend_stamp": "initial_weight_reason"
+    },
+    {
+      "question_id": 1280,
+      "question_text": "Please tell us more",
+      "question_frontend_stamp": "initial_weight_reason_free"
+    },
+    {
+      "question_id": 3649,
+      "question_text": "What’s your name?",
+      "question_frontend_stamp": "initial_first_last_name"
+    },
+    {
+      "question_id": 1284,
+      "question_text": "How would you rate your mood recently?",
+      "question_frontend_stamp": "initial_mood"
+    },
+    {
+      "question_id": 1287,
+      "question_text": "Which diet?",
+      "question_frontend_stamp": "initial_weight_follow_diet_free_text"
+    },
+    {
+      "question_id": 1300,
+      "question_text": "Please give the doctor more information.",
+      "question_frontend_stamp": "initial_weight_issues_following_free_text"
+    },
+    {
+      "question_id": 1302,
+      "question_text": "Please give the doctor more information.",
+      "question_frontend_stamp": "initial_weight_more_issues_following_free_text"
+    },
+    {
+      "question_id": 1306,
+      "question_text": "Please explain",
+      "question_frontend_stamp": "initial_weight_medications_free_text"
+    },
+    {
+      "question_id": 1310,
+      "question_text": "What about history of heart disease in your family?",
+      "question_frontend_stamp": "initial_weight_heart"
+    },
+    {
+      "question_id": 1311,
+      "question_text": "Do you ever make yourself sick (vomit) because you feel uncomfortably full or worried you have overeaten?",
+      "question_frontend_stamp": "initial_weight_vomit"
+    },
+    {
+      "question_id": 1312,
+      "question_text": "Do you worry you have lost control over how much you eat?",
+      "question_frontend_stamp": "initial_weight_lost_control"
+    },
+    {
+      "question_id": 1313,
+      "question_text": "Would you say food dominates your life?",
+      "question_frontend_stamp": "initial_weight_food_dominates"
+    },
+    {
+      "question_id": 1318,
+      "question_text": "Please list all the medications (including strength) you’re currently on for your doctor",
+      "question_frontend_stamp": "initial_medications_free_text"
+    },
+    {
+      "question_id": 1322,
+      "question_text": "Does your weight interfere with activities / tasks / family responsibilities?",
+      "question_frontend_stamp": "initial_weight_interfere_activities"
+    },
+    {
+      "question_id": 3219,
+      "question_text": "Is there a specific medication you are looking for?",
+      "question_frontend_stamp": "initial_weight_medication_preference"
+    },
+    {
+      "question_id": 1325,
+      "question_text": "Please provide more information for your doctor as to why you prefer this form of treatment.",
+      "question_frontend_stamp": "initial_weight_preferences_free_text"
+    },
+    {
+      "question_id": 1273,
+      "question_text": "What’s your phone number?",
+      "question_frontend_stamp": "initial_moshy_phone_number"
+    },
+    {
+      "question_id": 1503,
+      "question_text": "How did you hear about Mosh? ",
+      "question_frontend_stamp": "initial_mosh_attribution"
+    },
+    {
+      "question_id": 3650,
+      "question_text": "Create a password",
+      "question_frontend_stamp": "initial_password_field"
+    },
+    {
+      "question_id": 1338,
+      "question_text": "That's it! You're all done. So what happens next? ",
+      "question_frontend_stamp": "initial_thankyou"
+    }
+  ],
+  "warnings": []
+}
